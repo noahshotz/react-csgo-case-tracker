@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 // import AccVal from "./AccVal";
 import Add from "./Add";
+import Log from "./Log";
+import Clear from "./Clear";
 
 function Header() {
 
@@ -8,6 +10,8 @@ function Header() {
         <div className="Header">
             {/**  <AccVal /> */}
             <Add />
+            <Log />
+            <Clear />
         </div>
     )
 
