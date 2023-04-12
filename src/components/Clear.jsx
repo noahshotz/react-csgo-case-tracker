@@ -1,6 +1,6 @@
 import React from "react";
 
-function getfromlocal() {
+function clearfromlocal() {
     localStorage.removeItem('inventory')
     window.dispatchEvent(new Event('inventory-clear'))
     console.log("inventory from localstorage has been removed")
@@ -10,7 +10,7 @@ function Clear() {
 
     return (
         <React.Fragment>
-            <button onClick={getfromlocal}>Clear storage</button>
+            <button onClick={clearfromlocal}>Clear storage</button>
         </React.Fragment>
     )
 

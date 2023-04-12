@@ -1,6 +1,6 @@
 import React from "react";
 
-function getfromlocal() {
+function logfromlocal() {
     if (JSON.parse(localStorage.getItem('inventory')) !== null) {
         console.log("Current storage:")
         console.log(JSON.parse(localStorage.getItem('inventory')))
@@ -13,7 +13,7 @@ function Log() {
 
     return (
         <React.Fragment>
-            <button onClick={getfromlocal}>Log storage</button>
+            <button onClick={logfromlocal}>Log storage</button>
         </React.Fragment>
     )
 

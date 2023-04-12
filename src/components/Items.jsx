@@ -1,43 +1,64 @@
 import React, { useEffect, useState } from "react";
 import MyComponent from "./MyComponent";
 
-
+import { CgSpinnerAlt } from 'react-icons/cg'
 
 function Items() {
-
-    const localInventory = JSON.parse(localStorage.getItem('inventory'))
+    const localInventory = JSON.parse(localStorage.getItem('inventory'));
     const [exists, setExists] = useState(false);
+    const [updateKey, setUpdateKey] = useState(0); // Add a state variable for update key
 
     useEffect(() => {
 
+        // if localStorage 'inventory' exists set exists true
         if (JSON.parse(localStorage.getItem('inventory')) !== null) {
             setExists(true)
         }
 
+        // on update increment updateKey to re-render component
+        const inventoryUpdateHandler = () => {
+            console.log("inventory-update event fired");
+            setExists(true);
+            setUpdateKey(prevKey => prevKey + 1); // Update the update key to force a re-render
+        };
+
+        // add inventory to localstorage
         window.addEventListener('inventory-add', () => {
-            console.log("event fired")
-            const localInventory = JSON.parse(localStorage.getItem('inventory'))
-            setExists(true)
-        })
+            console.log("inventory-add event fired");
+            const localInventory = JSON.parse(localStorage.getItem('inventory'));
+            setExists(true);
+        });
 
+        window.addEventListener('inventory-update', inventoryUpdateHandler); // Add event listener for inventory-update
+
+        // clear local storage & set exists to false
         window.addEventListener('inventory-clear', () => {
-            console.log("event fired")
-            setExists(false) 
-        })
+            console.log("inventory-clear event fired");
+            setExists(false);
+        });
 
-    }, [])
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener('inventory-update', inventoryUpdateHandler);
+        }
 
+    }, []);
 
     if (!exists) {
-        return <h2>Waiting for items</h2>;
+        return (
+            <div className="no-items-card">
+                <span>Waiting for items</span>
+                <CgSpinnerAlt className="spin" />
+            </div>
+        );
     }
 
     if (exists) {
         return (
-            // Map through inventory object
+            // Map through inventory object with the update key as the component key
             Object.keys(localInventory).map((key) => (
                 <MyComponent
-                    key={key}
+                    key={`${key}-${updateKey}`} // Use the update key as a part of the component key
                     thumbnail={localInventory[key].image} // image url from steam market listing
                     name={localInventory[key].name} // user chosen name
                     quantity={localInventory[key].quantity} // quantity in inventory
