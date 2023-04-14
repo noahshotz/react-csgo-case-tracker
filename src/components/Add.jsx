@@ -3,10 +3,12 @@ import Inventory from "./Inventory";
 
 
 function addtolocal() {
-    localStorage.setItem('inventory', JSON.stringify(Inventory))
-    window.dispatchEvent(new Event('inventory-add'));
-    console.log("Added to storage:")
-    console.log(JSON.parse(localStorage.getItem('inventory')))
+    if (localStorage.getItem('inventory') === null) {
+        localStorage.setItem('inventory', JSON.stringify(Inventory))
+        window.dispatchEvent(new Event('inventory-add'));
+    } else {
+        console.log("inventory exists already, only update available")
+    }
 }
 
 function Add() {

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Edit from "./Edit";
+
+import { CgSpinnerAlt } from 'react-icons/cg'
 
 const euroFormatter = new Intl.NumberFormat('de-DE', {
     style: 'currency',
@@ -24,12 +27,11 @@ async function getData(isLoading, setLoading, myData, setMyData, market_hash_nam
 }
 
 function MyComponent({
-    thumbnail, name, quantity, market_hash_name, url1, url2
+    myKey, thumbnail, name, quantity, market_hash_name, url1, url2
 }) {
 
     const [isLoading, setLoading] = useState(true);
     const [myData, setMyData] = useState();
-
 
     useEffect(() => {
         getData(isLoading, setLoading, myData, setMyData, market_hash_name)
@@ -50,14 +52,22 @@ function MyComponent({
                     </div>
                     <div className="item-section">
                         <label>Value</label>
-                        <span>Loading</span>
+                        <span><CgSpinnerAlt className="spin" /></span>
                     </div>
                     <div className="item-section">
                         <label>Total Value</label>
-                        <span>Loading</span>
+                        <span><CgSpinnerAlt className="spin" /></span>
                     </div>
                     <a href={url1} target="_blank" rel="noopener noreferrer">Steam</a>
                     <a href={url2} target="_blank" rel="noopener noreferrer">Buff</a>
+                    <Edit
+                        myKey={myKey}
+                        name={name}
+                        quantity={quantity}
+                        market_hash_name={market_hash_name}
+                        steam_url={url1}
+                        buff_url={url2}
+                    />
                 </div>
             </React.Fragment>
         )
@@ -89,6 +99,14 @@ function MyComponent({
                     </div>
                     <a href={url1}>Steam</a>
                     <a href={url2}>Buff</a>
+                    <Edit
+                        myKey={myKey}
+                        name={name}
+                        quantity={quantity}
+                        market_hash_name={market_hash_name}
+                        steam_url={url1}
+                        buff_url={url2}
+                    />
                 </div>
             </React.Fragment>
         )

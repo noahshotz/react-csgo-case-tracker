@@ -4,6 +4,7 @@ import Add from "./Add";
 import Log from "./Log";
 import Clear from "./Clear";
 import Update from "./Update";
+import Modal from "./Modal";
 
 function Header() {
 
@@ -14,6 +15,7 @@ function Header() {
             <Log />
             <Clear />
             <Update />
+            <Modal />
         </div>
     )
 

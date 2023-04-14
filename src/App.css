@@ -55,8 +55,7 @@
 }
 
 .row:hover {
-  background-color: #262626;
-  cursor: pointer;
+  background-color: #282828;
 }
 
 .row img {
@@ -125,4 +124,38 @@
     to {
         transform:rotate(360deg);
     }
+}
+
+.modal-group {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-container {
+  background-color: #262626;
+  padding: 40px;
+}
+
+.modal-container h2 {
+  margin: 0;
+}
+
+.modal-bg {
+  background-color: aliceblue;
+}
+
+.item-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px
+}
+
+.item-input input {
+  padding: 7px;
+  min-width: 300px;
+  margin-bottom: 20px;
+}
+
+.btn-del {
+  color: red;
 }

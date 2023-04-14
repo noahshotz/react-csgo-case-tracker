@@ -17,14 +17,12 @@ function Items() {
 
         // on update increment updateKey to re-render component
         const inventoryUpdateHandler = () => {
-            console.log("inventory-update event fired");
             setExists(true);
             setUpdateKey(prevKey => prevKey + 1); // Update the update key to force a re-render
         };
 
         // add inventory to localstorage
         window.addEventListener('inventory-add', () => {
-            console.log("inventory-add event fired");
             const localInventory = JSON.parse(localStorage.getItem('inventory'));
             setExists(true);
         });
@@ -33,7 +31,6 @@ function Items() {
 
         // clear local storage & set exists to false
         window.addEventListener('inventory-clear', () => {
-            console.log("inventory-clear event fired");
             setExists(false);
         });
 
@@ -58,6 +55,7 @@ function Items() {
             // Map through inventory object with the update key as the component key
             Object.keys(localInventory).map((key) => (
                 <MyComponent
+                    myKey={key}
                     key={`${key}-${updateKey}`} // Use the update key as a part of the component key
                     thumbnail={localInventory[key].image} // image url from steam market listing
                     name={localInventory[key].name} // user chosen name
