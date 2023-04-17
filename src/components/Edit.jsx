@@ -58,45 +58,39 @@ const deleteEntry = (myKey) => {
 }
 
 function Edit({
-    myKey, name, quantity, market_hash_name, steam_url, buff_url
+    myKey, name, quantity, market_hash_name, image, steam_url, buff_url
 }) {
 
     // set states for all inputs
-    const [nameInput, setNameInput] = useState('');
-    const [quantityInput, setQuantityInput] = useState(0);
-    const [hashnameInput, setHashnameInput] = useState('');
-    const [imageInput, setImageInput] = useState('');
-    const [steamInput, setSteamInput] = useState('');
-    const [buffInput, setBuffInput] = useState('');
+    const [nameInput, setNameInput] = useState(name);
+    const [quantityInput, setQuantityInput] = useState(quantity);
+    const [hashnameInput, setHashnameInput] = useState(market_hash_name);
+    const [imageInput, setImageInput] = useState(image);
+    const [steamInput, setSteamInput] = useState(steam_url);
+    const [buffInput, setBuffInput] = useState(buff_url);
 
     const handleNameInput = (event) => {
         setNameInput(event.target.value); // Update the inputValue1 state with the input value
-        console.log(nameInput)
     }
 
     const handleQuantityInput = (event) => {
         setQuantityInput(event.target.value); // Update the inputValue2 state with the input value
-        console.log(quantityInput)
     }
 
     const handleHashnameInput = (event) => {
         setHashnameInput(event.target.value); // Update the inputValue2 state with the input value
-        console.log(hashnameInput)
     }
 
     const handleImageInput = (event) => {
         setImageInput(event.target.value); // Update the inputValue2 state with the input value
-        console.log(imageInput)
     }
 
     const handleSteamUrlInput = (event) => {
         setSteamInput(event.target.value); // Update the inputValue2 state with the input value
-        console.log(steamInput)
     }
 
     const handleBuffUrlInput = (event) => {
         setBuffInput(event.target.value); // Update the inputValue2 state with the input value
-        console.log(buffInput)
     }
 
     return (
@@ -138,6 +132,16 @@ function Edit({
                             >
                             </input>
 
+                            <label>Image url</label>
+                            <input
+                                type="text"
+                                placeholder={image}
+                                name="image"
+                                value={imageInput}
+                                onChange={handleImageInput}
+                            >
+                            </input>
+
                             <label>Steam url</label>
                             <input
                                 type="text"
@@ -165,6 +169,7 @@ function Edit({
                                     nameInput,
                                     quantityInput,
                                     hashnameInput,
+                                    imageInput,
                                     steamInput,
                                     steamInput,
                                     buffInput

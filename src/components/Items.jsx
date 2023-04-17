@@ -61,6 +61,7 @@ function Items() {
                     name={localInventory[key].name} // user chosen name
                     quantity={localInventory[key].quantity} // quantity in inventory
                     market_hash_name={localInventory[key].market_hash_name} // item name in steam url to fetch price from
+                    image={localInventory[key].image} // steam thumbnail image
                     url1={localInventory[key].url1} // url to steam market listing
                     url2={localInventory[key].url2} // url to buff market listing
                 />

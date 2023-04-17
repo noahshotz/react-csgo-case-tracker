@@ -27,7 +27,7 @@ async function getData(isLoading, setLoading, myData, setMyData, market_hash_nam
 }
 
 function MyComponent({
-    myKey, thumbnail, name, quantity, market_hash_name, url1, url2
+    myKey, thumbnail, name, quantity, market_hash_name, image, url1, url2
 }) {
 
     const [isLoading, setLoading] = useState(true);
@@ -64,6 +64,7 @@ function MyComponent({
                         myKey={myKey}
                         name={name}
                         quantity={quantity}
+                        image={image}
                         market_hash_name={market_hash_name}
                         steam_url={url1}
                         buff_url={url2}
@@ -104,6 +105,7 @@ function MyComponent({
                         name={name}
                         quantity={quantity}
                         market_hash_name={market_hash_name}
+                        image={image}
                         steam_url={url1}
                         buff_url={url2}
                     />
