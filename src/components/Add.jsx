@@ -15,7 +15,7 @@ function Add() {
 
     return (
         <React.Fragment>
-            <button onClick={addtolocal}>Add to storage</button>
+            <button onClick={addtolocal}>Add test object</button>
         </React.Fragment>
     )
 

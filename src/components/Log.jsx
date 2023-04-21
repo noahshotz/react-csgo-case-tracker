@@ -13,7 +13,7 @@ function Log() {
 
     return (
         <React.Fragment>
-            <button onClick={logfromlocal}>Log storage</button>
+            <button onClick={logfromlocal}>Log to console</button>
         </React.Fragment>
     )
 

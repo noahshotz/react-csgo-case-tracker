@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Popup from 'reactjs-popup'
+import { MdModeEdit as EditIcon } from 'react-icons/md'
 
 const editEntry = (
     myKey,
@@ -95,7 +96,7 @@ function Edit({
 
     return (
         <React.Fragment>
-            <Popup trigger={<button> Edit</button>} modal lockScroll>
+            <Popup trigger={<button><EditIcon /></button>} modal lockScroll>
                 <div className="modal-group">
                     <div className="modal-container">
                         <h2>
@@ -170,7 +171,6 @@ function Edit({
                                     quantityInput,
                                     hashnameInput,
                                     imageInput,
-                                    steamInput,
                                     steamInput,
                                     buffInput
                                 )}>

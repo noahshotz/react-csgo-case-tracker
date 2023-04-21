@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Popup from 'reactjs-popup';
+import { IoAdd as AddIcon } from 'react-icons/io5'
 //import 'reactjs-popup/dist/index.css';
 
 const addToInventory = (
@@ -89,7 +90,7 @@ function Modal() {
     }
 
     return (
-        <Popup trigger={<button> Modal</button>} modal lockScroll>
+        <Popup trigger={<button>Add <AddIcon /></button>} modal lockScroll>
             <div className="modal-group">
                 <div className="modal-container">
                     <h2>
@@ -168,7 +169,7 @@ function Modal() {
                                 buffInput
                             )}
                         >
-                            Add
+                            Add <AddIcon />
                         </button>
                     </form>
                 </div>
