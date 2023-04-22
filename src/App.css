@@ -50,12 +50,12 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background-color: #2d2d2d;
+  background-color: #fafafa;
   transition: 0.2s;
 }
 
 .row:hover {
-  background-color: #282828;
+  background-color: #ededed;
 }
 
 .row img {
@@ -90,7 +90,7 @@
 .Header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 20px;
   padding: 10px;
 }
@@ -132,11 +132,13 @@
 }
 
 .modal-container {
-  background-color: #262626;
+  background-color: #fafafa;
+  border-radius: 5px;
+  border: solid 1px #ededed;
   padding: 40px;
 }
 
-.modal-container h2 {
+h2 {
   margin: 0;
 }
 

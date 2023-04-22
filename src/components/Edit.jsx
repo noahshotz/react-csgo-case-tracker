@@ -4,26 +4,21 @@ import { MdModeEdit as EditIcon } from 'react-icons/md'
 
 const editEntry = (
     myKey,
-    nameInput,
-    quantityInput,
-    hashnameInput,
-    imageInput,
-    steamInput,
-    buffInput
-    ) => {
+    quantityInput
+) => {
 
-    // parse localstorage to object
-    let inventory = JSON.parse(localStorage.getItem('inventory'))
+    // Parse localStorage to object
+    let inventory = JSON.parse(localStorage.getItem('inventory'));
 
-    // update inventory object
-    inventory[myKey] = {
-        name: nameInput || "DEFAULT",
-        quantity: quantityInput || 1,
-        market_hash_name: hashnameInput,
-        image: imageInput,
-        url1: steamInput,
-        url2: buffInput
-    }
+    // Update inventory object
+    inventory = {
+        ...inventory, // Clone original object
+        [myKey]: { // Update specific property using computed property name
+            ...inventory[myKey], // Clone original property value
+            quantity: quantityInput || 1 // Update quantity property
+        }
+    };
+
 
     // delete current localstorage
     localStorage.removeItem('inventory')
@@ -59,39 +54,14 @@ const deleteEntry = (myKey) => {
 }
 
 function Edit({
-    myKey, name, quantity, market_hash_name, image, steam_url, buff_url
+    myKey, quantity
 }) {
 
     // set states for all inputs
-    const [nameInput, setNameInput] = useState(name);
     const [quantityInput, setQuantityInput] = useState(quantity);
-    const [hashnameInput, setHashnameInput] = useState(market_hash_name);
-    const [imageInput, setImageInput] = useState(image);
-    const [steamInput, setSteamInput] = useState(steam_url);
-    const [buffInput, setBuffInput] = useState(buff_url);
-
-    const handleNameInput = (event) => {
-        setNameInput(event.target.value); // Update the inputValue1 state with the input value
-    }
 
     const handleQuantityInput = (event) => {
         setQuantityInput(event.target.value); // Update the inputValue2 state with the input value
-    }
-
-    const handleHashnameInput = (event) => {
-        setHashnameInput(event.target.value); // Update the inputValue2 state with the input value
-    }
-
-    const handleImageInput = (event) => {
-        setImageInput(event.target.value); // Update the inputValue2 state with the input value
-    }
-
-    const handleSteamUrlInput = (event) => {
-        setSteamInput(event.target.value); // Update the inputValue2 state with the input value
-    }
-
-    const handleBuffUrlInput = (event) => {
-        setBuffInput(event.target.value); // Update the inputValue2 state with the input value
     }
 
     return (
@@ -103,15 +73,6 @@ function Edit({
                             Edit localStorage entry
                         </h2>
                         <form className="item-input">
-                            <label>Name</label>
-                            <input
-                                type="text"
-                                placeholder={name}
-                                name="name"
-                                value={nameInput}
-                                onChange={handleNameInput}
-                            >
-                            </input>
 
                             <label>Quantity</label>
                             <input
@@ -123,56 +84,11 @@ function Edit({
                             >
                             </input>
 
-                            <label>Market hash name</label>
-                            <input
-                                type="text"
-                                placeholder={market_hash_name}
-                                name="markethashname"
-                                value={hashnameInput}
-                                onChange={handleHashnameInput}
-                            >
-                            </input>
-
-                            <label>Image url</label>
-                            <input
-                                type="text"
-                                placeholder={image}
-                                name="image"
-                                value={imageInput}
-                                onChange={handleImageInput}
-                            >
-                            </input>
-
-                            <label>Steam url</label>
-                            <input
-                                type="text"
-                                placeholder={steam_url}
-                                name="steamurl"
-                                value={steamInput}
-                                onChange={handleSteamUrlInput}
-                            >
-                            </input>
-
-                            <label>Buff url</label>
-                            <input
-                                type="text"
-                                placeholder={buff_url}
-                                name="buffurl"
-                                value={buffInput}
-                                onChange={handleBuffUrlInput}
-                            >
-                            </input>
-
                             <button
                                 type="button"
                                 onClick={() => editEntry(
                                     myKey,
-                                    nameInput,
-                                    quantityInput,
-                                    hashnameInput,
-                                    imageInput,
-                                    steamInput,
-                                    buffInput
+                                    quantityInput
                                 )}>
                                 Edit
                             </button>
