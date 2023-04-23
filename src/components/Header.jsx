@@ -9,7 +9,7 @@ function Header() {
 
     return (
         <div className="Header">
-            <h2>Allmycases</h2>
+            <h2>allmycases</h2>
             {/**  <AccVal /> */}
             {/** <Add /> */}
             {/** <Log /> */}
