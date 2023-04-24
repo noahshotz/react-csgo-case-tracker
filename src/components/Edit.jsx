@@ -54,7 +54,7 @@ const deleteEntry = (myKey) => {
 }
 
 function Edit({
-    myKey, quantity
+    myKey, quantity, name
 }) {
 
     // set states for all inputs
@@ -66,12 +66,12 @@ function Edit({
 
     return (
         <React.Fragment>
-            <Popup trigger={<button><EditIcon /></button>} modal lockScroll>
+            <Popup trigger={<button className="btn-inline"><EditIcon /></button>} modal lockScroll>
                 <div className="modal-group">
                     <div className="modal-container">
-                        <h2>
-                            Edit localStorage entry
-                        </h2>
+                        <h3>
+                            Edit {name}
+                        </h3>
                         <form className="item-input">
 
                             <label>Quantity</label>
@@ -85,6 +85,7 @@ function Edit({
                             </input>
 
                             <button
+                                className="btn-edit"
                                 type="button"
                                 onClick={() => editEntry(
                                     myKey,

@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import Header from './components/Header'
 import Items from './components/Items'
 
-import './App.css'
+import './App.scss'
 
 
 function App() {
