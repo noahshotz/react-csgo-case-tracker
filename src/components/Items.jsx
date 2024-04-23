@@ -44,7 +44,7 @@ function Items() {
     if (!exists) {
         return (
             <div className="no-items-card">
-                <span>Waiting for items</span>
+                <span>Waiting for items, press </span>
                 <CgSpinnerAlt className="spin" />
             </div>
         );

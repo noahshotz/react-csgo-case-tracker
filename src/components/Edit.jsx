@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import Popup from 'reactjs-popup'
 import { MdModeEdit as EditIcon } from 'react-icons/md'
 
-const editEntry = (
-    myKey,
-    quantityInput
-) => {
+const editEntry = (myKey, quantityInput) => {
 
     // Parse localStorage to object
     let inventory = JSON.parse(localStorage.getItem('inventory'));
@@ -18,7 +15,6 @@ const editEntry = (
             quantity: quantityInput || 1 // Update quantity property
         }
     };
-
 
     // delete current localstorage
     localStorage.removeItem('inventory')
@@ -53,9 +49,7 @@ const deleteEntry = (myKey) => {
 
 }
 
-function Edit({
-    myKey, quantity, name
-}) {
+function Edit({ myKey, quantity, name }) {
 
     // set states for all inputs
     const [quantityInput, setQuantityInput] = useState(quantity);
@@ -109,4 +103,4 @@ function Edit({
     )
 }
 
-export default Edit
+export default Edit;
